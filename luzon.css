@@ -1,0 +1,147 @@
+/* luzon.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f4f4;
+}
+
+.transparent-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(26,34,51,0.4);
+  display: flex;
+  align-items: center;
+  padding: 16px 40px;
+  z-index: 1000;
+  box-shadow: none;
+}
+
+.transparent-navbar .logo {
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #ffb300;
+  margin-right: 40px;
+}
+
+.transparent-navbar nav {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  z-index: 1; /* <-- fixes search button blocking */
+}
+
+.transparent-navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.transparent-navbar a.home-btn {
+  background: #ffb300;
+  color: #1a2233;
+  font-weight: bold;
+  border-radius: 0 20px 20px 0;
+}
+
+.transparent-navbar a:hover,
+.transparent-navbar a.active {
+  background: rgba(255,179,0,0.15);
+  color: #ffb300;
+}
+
+.section-title {
+  margin: 100px 0 16px 32px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a2233;
+}
+
+.scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 0 32px 40px;
+  scroll-behavior: smooth;
+}
+
+.card {
+  position: relative;
+  min-width: 220px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  display: block;
+}
+
+.card h3 {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  color: white;
+}
+
+.card:hover .favorite-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.favorite-btn::before {
+  content: '🤍';
+  display: block;
+  line-height: 32px;
+  text-align: center;
+}
+
+.favorite-btn.favorited::before {
+  content: '❤️';
+}
+
+.favorite-btn:hover {
+  color: #ff4d4d;
+}

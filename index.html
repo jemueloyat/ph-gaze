@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Philippine Gaze - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* [same CSS here as yours, no change unless you want me to externalize it to styles.css] */
+  </style>
+</head>
+<body>
+  <header class="transparent-navbar">
+    <div class="logo">Philippine Gaze</div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="main.html">Main</a>
+      <a href="#stories">Stories</a>
+      <a href="favorites.html">Favorites</a>
+      <button id="logoutBtn" class="logout-button" style="margin-left: auto;">Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="home-hero">
+      <img src="assets/ph-flag.jpg" alt="Philippines Flag" />
+      <h1>Welcome to the Philippines!</h1>
+      <p>Discover the wonders of the Pearl of the Orient Seas.<br />
+        Explore breathtaking islands, vibrant culture, and warm hospitality.
+      </p>
+    </section>
+
+    <section class="recommended-islands">
+      <div class="island-card">
+        <img src="assets/palawan.jpg" alt="Palawan" />
+        <h3>Palawan</h3>
+        <p>Crystal-clear waters, limestone cliffs, and the world-famous Underground River.</p>
+      </div>
+      <div class="island-card">
+        <img src="assets/boracay.jpg" alt="Boracay" />
+        <h3>Boracay</h3>
+        <p>Powdery white sand beaches and vibrant nightlife.</p>
+      </div>
+      <div class="island-card">
+        <img src="assets/siargao.jpg" alt="Siargao" />
+        <h3>Siargao</h3>
+        <p>The surfing capital of the Philippines, also known for its lagoons and island hopping.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDoijFlD_hJ2mp4FstfSZO4qUPKIzEdmPs",
+      authDomain: "hello-e7a6d.firebaseapp.com",
+      projectId: "hello-e7a6d",
+      storageBucket: "hello-e7a6d.appspot.com",
+      messagingSenderId: "693146874206",
+      appId: "1:693146874206:web:d37f7a3c823fcba4401fcf"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const logoutButton = document.getElementById("logoutBtn");
+    logoutButton.addEventListener("click", () => {
+      signOut(auth)
+        .then(() => {
+          alert("You have been logged out.");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.error("Logout failed:", error);
+          alert("Logout failed.");
+        });
+    });
+  </script>
+</body>
+</html>
